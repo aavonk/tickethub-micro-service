@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - infra/k8s/*
+build:
+  # local:
+  #   push: false
+  googleCloudBuild:
+    #GCP project Id
+    projectId: ticketing-dev-321420
+  artifacts:
+    # The image name that Google Cloud asigns when using Cloud Build
+    - image: us.gcr.io/ticketing-dev-321420/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
