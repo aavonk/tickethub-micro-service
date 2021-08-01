@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(
   // We are going to disable encryption (signed: false) of the cookie itsself so
   // that it can easily be understood by other services that may be written
-  // in a different language and doesn't have access to Nodes 'cookie session' and
+  // in a different language and doesn't have access to Nodes/NPM 'cookie session' and
   // whatever encryption algorithm they use.
   // The JWT that will be inside the cookie should be tamper proof and shouldn't contain
   // sensitive information
