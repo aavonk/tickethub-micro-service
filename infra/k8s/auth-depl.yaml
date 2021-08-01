@@ -16,6 +16,12 @@ spec:
         - name: auth
           #The image GCP assigns us.gcr.io/project_id/your_name
           image: us.gcr.io/ticketing-dev-321420/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
 ---
 # Service Config -- default type of ClusterIP
 apiVersion: v1
