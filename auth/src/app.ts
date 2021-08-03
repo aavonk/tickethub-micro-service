@@ -20,7 +20,7 @@ app.use(
   // sensitive information
   cookieSession({
     signed: false,
-    secure: true, // use only on HTTPS
+    secure: process.env.NODE_ENV !== 'test', // use only on HTTPS if not in test env
   })
 );
 

@@ -5,7 +5,8 @@ import { app } from '../app';
 let mongo: any;
 // Setup an in memory mongo data base before all tests
 beforeAll(async () => {
-  mongo = new MongoMemoryServer();
+  process.env.JWT_KEY = 'asdf';
+  mongo = await MongoMemoryServer.create();
   const mongoUri = await mongo.getUri();
 
   await mongoose.connect(mongoUri, {
